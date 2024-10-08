@@ -6,9 +6,11 @@
 - [x] set up telegram bot & drop credentials in `.env`
 - [x] init netlify
 - [x] create netlify live server & drop dev url in `.env`
-- [x] set webhook and verify at https://api.telegram.org/bot<token>/getWebhookInfo
+- [x] set webhook and verify at `https://api.telegram.org/bot<token>/getWebhookInfo`
 - [x] pass update to bot 
 - [x] add auth check
+- [x] set up reminder with inline keyboard
+- [ ] handle callback query
 
 
 

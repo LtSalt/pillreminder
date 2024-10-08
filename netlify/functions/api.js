@@ -1,17 +1,19 @@
 import 'dotenv/config';
 import { Telegraf } from 'telegraf';
-import { message } from 'telegraf/filters'
+import { callbackQuery } from 'telegraf/filters'
 
 const bot = new Telegraf(process.env.TELEGRAM_PILLBOT_TOKEN);
-bot.on(message('text'), ctx => {
-    console.log('Received text message:', ctx.message.text);
+
+bot.on(callbackQuery('data'), ctx => {
+    console.log('Received callback query:', ctx.callbackQuery.data);
+    ctx.reply('Danke für die Antwort!');
 })
 
-export default async function handler(request, context) {
+export default async function handler(request) {
     console.log('Request received');
     
     const body = await request.json();
-    const userID = body?.message?.from?.id;
+    const userID = body?.callback_query?.from?.id;
 
     if (!userID) {
         console.error('Invalid request body:', body);
