@@ -1,11 +1,11 @@
 # README
 
 ## TODO
-- [ ] init `package.json`
-- [ ] init git
-- [ ] set up telegram bot
-- [ ] drop credentials in `.env`
-- [ ] init netlify
+- [x] init `package.json`
+- [x] init git
+- [x] set up telegram bot
+- [x] drop credentials in `.env`
+- [x] init netlify
 - [ ] create netlify live server
 - [ ]  
 
