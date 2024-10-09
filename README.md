@@ -18,6 +18,8 @@
   - [x] edit markup in message
 - [x] added third 'pending/maybe' state to markup and db 
 
+- set standby after 21 days in a row
+- check duration in reminder
 
 ## Don't forget
 - [ ] handle lingering messages 

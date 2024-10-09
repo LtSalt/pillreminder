@@ -33,7 +33,6 @@ bot.on(callbackQuery('data'), async (ctx) => {
             }
         }
     })
-    console.log(keyboards.get(ctx.callbackQuery.data))
 
     ctx.editMessageReplyMarkup({
         inline_keyboard: keyboards.get(ctx.callbackQuery.data)
