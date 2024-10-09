@@ -127,6 +127,30 @@ const nt = {
                 }
             })
         })
+    },
+    update: async (ctx) => {
+        const messageID = ctx.callbackQuery.message.message_id;
+
+        const query = await notion.databases.query({
+            database_id: process.env.NOTION_DATABASE_ID,
+            filter: {
+                property: 'MessageID',
+                number: {
+                    equals: messageID
+                }
+            }
+        })
+
+        await notion.pages.update({
+            page_id: query.results[0].id,
+            properties: {
+                Status: {
+                    select: {
+                        name: ctx.callbackQuery.data
+                    }
+                }
+            }
+        })
     }
 
 }

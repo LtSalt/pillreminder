@@ -1,4 +1,4 @@
-# README
+****# README
 
 ## Steps 
 - [x] init `package.json`
@@ -17,9 +17,9 @@
   - [x] toggle state by input data
   - [x] edit markup in message
 - [x] added third 'pending/maybe' state to markup and db 
+- [x] set standby after 21 days in a row
+- [x] check duration in reminder
 
-- set standby after 21 days in a row
-- check duration in reminder
 
 ## Don't forget
 - [ ] handle lingering messages 
@@ -28,3 +28,4 @@
 ## Also
 - can't set global node version with `nvm.fish`
 - maybe also nvm integration problem
+- `bot` event listener and `tg` api in separate files. seems convoluted, might simplify
