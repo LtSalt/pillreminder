@@ -5,7 +5,7 @@ export default async function handler(request) {
     
     const body = await request.json();
     console.log('Request body:', body);
-    const userID = body?.callback_query?.from?.id;
+    const userID = body?.callback_query?.from?.id || body?.message?.from?.id;
 
     if (!userID) {
         console.error('Invalid request body:', body);

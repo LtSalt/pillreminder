@@ -1,13 +1,26 @@
 import { Telegraf } from 'telegraf';
-import { callbackQuery } from 'telegraf/filters';
+import { callbackQuery, message } from 'telegraf/filters';
 import nt from './nt.js';
 import keyboards from './keyboards';
 
 const bot = new Telegraf(process.env.TELEGRAM_PILLBOT_TOKEN);
 
-bot.on(callbackQuery('data'), async (ctx) => {
+bot.on(message('text'), async (ctx) => {
     try {
-        console.log('Context:' , ctx);
+        const text = ctx.update.message.text;
+        console.log('received message:', text);
+
+        if (text === '/start') return
+        await ctx.reply('Bitte schick mir keine Nachrichten. Ich reagiere nur auf Knopfdruck.');
+    } catch (error) { 
+        console.error('Error handling message:', error);
+    }
+})
+
+bot.on(callbackQuery('data'), async (ctx) => {
+    console.log('Received callback query');
+
+    try {
         await Promise.all([nt.update(ctx), tg.update(ctx)]);
         console.log('Update handled');
     } catch (error) {
