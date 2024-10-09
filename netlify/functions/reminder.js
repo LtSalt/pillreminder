@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import { Telegraf } from 'telegraf';
 import nt from '../nt.js';
 import tg from '../tg.js';
@@ -19,6 +18,7 @@ export default async function handler() {
             await nt.addStandby(message);
 
         } else {
+            console.log('Sending reminder');
             const message = await tg.sendReminder(bot)
             await nt.addToday(message);
         }
