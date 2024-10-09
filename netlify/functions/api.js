@@ -11,7 +11,7 @@ export default async function handler(request) {
         return new Response('Invalid request body', { status: 400 });
     }
 
-    if (userID !== Number(process.env.TELEGRAM_USER_ID)) {
+    if (userID !== Number(process.env.TELEGRAM_SUBSCRIBER_ID)) {
         console.error('Unauthorized request:', userID);
         return new Response('Unauthorized', { status: 401 });
     }

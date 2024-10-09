@@ -19,6 +19,8 @@
 - [x] added third 'pending/maybe' state to markup and db 
 - [x] set standby after 21 days in a row
 - [x] check duration in reminder
+- [ ] add watchdog
+- [ ] add guard for `reminder.js` and `watchdogjs`
 
 
 ## Don't forget
