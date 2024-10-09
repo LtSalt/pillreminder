@@ -1,8 +1,5 @@
-import { Telegraf } from 'telegraf';
 import nt from '../nt.js';
 import tg from '../tg.js';
-
-const bot = new Telegraf(process.env.TELEGRAM_PILLBOT_TOKEN);
 
 export default async function handler() {
     try {
@@ -14,12 +11,12 @@ export default async function handler() {
         } else if (hasCompleted) {
             console.log('Has completed 21 days, creating standby');
 
-            const message = await tg.notifyStandby(bot);
+            const message = await tg.notifyStandby();
             await nt.addStandby(message);
 
         } else {
             console.log('Sending reminder');
-            const message = await tg.sendReminder(bot)
+            const message = await tg.sendReminder()
             await nt.addToday(message);
         }
     } catch(err) {
