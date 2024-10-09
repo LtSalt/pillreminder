@@ -15,5 +15,5 @@ export default async function handler() {
 }
 
 export const config = {
-    schedule: '30 20 * * *'
+    schedule: '20 * * *'
 }

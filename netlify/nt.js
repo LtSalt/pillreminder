@@ -158,8 +158,7 @@ const nt = {
 
     update: async (ctx) => {
         console.log('Updating entry in database');
-        console.log('Message', ctx.update.callbackQuery.message);
-        const messageID = ctx.update.callbackQuery.message.message_id;
+        const messageID = ctx.update.callback_query.message.message_id;
 
         console.log('Querying database');
         const query = await notion.databases.query({
