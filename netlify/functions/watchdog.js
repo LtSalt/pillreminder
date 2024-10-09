@@ -8,13 +8,12 @@ export default async function handler() {
         if (hasTaken) return
 
         console.log('Alerting partner');
-        tg.alertPartner();
+        await tg.alertPartner();
     } catch(err) {
         console.error('Watchdog encountered an error:', err);
     }
-
 }
 
 export const config = {
-    schedule: '0 20 * * *'
+    schedule: '30 20 * * *'
 }

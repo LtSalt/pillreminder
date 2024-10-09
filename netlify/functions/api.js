@@ -4,6 +4,7 @@ export default async function handler(request) {
     console.log('Request received');
     
     const body = await request.json();
+    console.log('Request body:', body);
     const userID = body?.callback_query?.from?.id;
 
     if (!userID) {

@@ -6,7 +6,12 @@ import keyboards from './keyboards';
 const bot = new Telegraf(process.env.TELEGRAM_PILLBOT_TOKEN);
 
 bot.on(callbackQuery('data'), async (ctx) => {
-    await Promise.all([nt.update(ctx), tg.update(ctx)]);
+    try {
+        await Promise.all([nt.update(ctx), tg.update(ctx)]);
+        console.log('Update handled');
+    } catch (error) {
+        console.error('Error handling update:', error);
+    }
 })
 
 const tg = {
@@ -30,7 +35,7 @@ const tg = {
         })
     },
 
-    handleUpdate: async (body) => {
+    handleUpdate: (body) => {
         bot.handleUpdate(body);
     },
 
