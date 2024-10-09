@@ -157,9 +157,11 @@ const nt = {
     },
 
     update: async (ctx) => {
-        console.log('Updating entry');
-        const messageID = ctx.callbackQuery.message.message_id;
+        console.log('Updating entry in database');
+        console.log('Message', ctx.update.callbackQuery.message);
+        const messageID = ctx.update.callbackQuery.message.message_id;
 
+        console.log('Querying database');
         const query = await notion.databases.query({
             database_id: process.env.NOTION_DATABASE_ID,
             filter: {
@@ -170,6 +172,7 @@ const nt = {
             }
         })
 
+        console.log('Updating entry');
         await notion.pages.update({
             page_id: query.results[0].id,
             properties: {

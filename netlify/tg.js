@@ -7,6 +7,7 @@ const bot = new Telegraf(process.env.TELEGRAM_PILLBOT_TOKEN);
 
 bot.on(callbackQuery('data'), async (ctx) => {
     try {
+        console.log('Context:' , ctx);
         await Promise.all([nt.update(ctx), tg.update(ctx)]);
         console.log('Update handled');
     } catch (error) {
@@ -30,11 +31,11 @@ const tg = {
     },
     
     update: async (ctx) => {
-        console.log('Updating entry');
-        console.log('Context:', ctx);
-        ctx.editMessageReplyMarkup({
+        console.log('Updating markup');
+        await ctx.editMessageReplyMarkup({
             inline_keyboard: keyboards.get(ctx.callbackQuery.data)
         })
+        console.log('Markup updated');
     },
 
     handleUpdate: async (body) => {
