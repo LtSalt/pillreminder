@@ -18,7 +18,7 @@ export default async function handler(request) {
     }
 
     console.log('Handling update');
-    tg.handleUpdate(body);
+    await tg.handleUpdate(body);
 
     return new Response('OK', { status: 200 });
 }

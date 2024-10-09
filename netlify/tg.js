@@ -30,13 +30,15 @@ const tg = {
     },
     
     update: async (ctx) => {
+        console.log('Updating entry');
+        console.log('Context:', ctx);
         ctx.editMessageReplyMarkup({
             inline_keyboard: keyboards.get(ctx.callbackQuery.data)
         })
     },
 
-    handleUpdate: (body) => {
-        bot.handleUpdate(body);
+    handleUpdate: async (body) => {
+        await bot.handleUpdate(body);
     },
 
     alertPartner: async () => {
