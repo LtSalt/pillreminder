@@ -58,6 +58,7 @@ const nt = {
     hasCompleted: async () => {
         console.log('Checking if 21 days have been completed');
         const twentyOneDaysAgo = format(subDays(new Date(), 21), 'yyyy-MM-dd');
+        console.log('Twenty one days ago:', twentyOneDaysAgo);
 
         const query = await notion.databases.query({
             database_id: process.env.NOTION_DATABASE_ID,
@@ -67,6 +68,11 @@ const nt = {
                         property: 'Date',
                         date: {
                             on_or_after: twentyOneDaysAgo,
+                        }
+                    },
+                    {
+                        property: 'Date',
+                        date: {
                             before: today 
                         }
                     },
@@ -77,9 +83,18 @@ const nt = {
                         }
                     }
                 ]
-            }
+            },
+            sorts: [
+                {
+                    property: 'Date',
+                    direction: 'descending'
+                }
+            ]
         })
-
+        const dates = query.results.map(entry => entry.properties.Date.date.start);
+        console.log('Dates of entries:', dates);
+        console.log('Number of entries:', query.results.length);
+        
         return query.results.length === 21;
     },
 
