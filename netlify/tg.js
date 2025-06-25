@@ -37,7 +37,7 @@ const tg = {
     sendReminder: async () => {
         const message = await bot.telegram.sendMessage(process.env.TELEGRAM_SUBSCRIBER_ID, 'Hast du die Pille genommen?', {
             reply_markup: {
-                inline_keyboard: keyboards.get('?')
+                inline_keyboard: keyboards.get('Nein')
             }
         });
         return message;

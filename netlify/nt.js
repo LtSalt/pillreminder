@@ -125,7 +125,7 @@ const nt = {
                 },
                 Status: {
                     select: {
-                        name: '?'
+                        name: 'Nein'
                     }
                 }
             }
