@@ -32,6 +32,8 @@ const nt = {
     },
 
     hasTaken: async () => {
+        console.log('Checking if pill has been taken');
+
         const query = await notion.databases.query({
             database_id: process.env.NOTION_DATABASE_ID,
             filter: {

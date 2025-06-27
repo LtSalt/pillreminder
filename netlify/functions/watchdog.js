@@ -3,9 +3,9 @@ import tg from '../tg.js';
 
 export default async function handler() {
     try {
-        console.log('Checking if pill has been taken');
-        const hasTaken = await nt.hasTaken();
-        if (hasTaken) return
+        const [hasTaken, isStandby] = await Promise.all([nt.hasTaken(), nt.isStandby()]);
+        console.log('Watchdog status:', { hasTaken, isStandby });
+        if (hasTaken || isStandby) return
 
         console.log('Alerting partner');
         await tg.alertPartner();
