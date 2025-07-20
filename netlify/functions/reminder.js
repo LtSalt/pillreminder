@@ -19,8 +19,8 @@ export default async function handler() {
             const message = await tg.sendReminder()
             await nt.addToday(message);
         }
-    } catch(err) {
-        console.error('Error creating Notion entry:', err);
+    } catch(error) {
+        console.error('Error creating Notion entry:', error.message);
     }
 }
 
