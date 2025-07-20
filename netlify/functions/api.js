@@ -4,7 +4,6 @@ export default async function handler(request) {
     try {
         console.log('Request received');
         
-        // Check if it's a POST request
         if (request.method !== 'POST') {
             console.log('Method not allowed:', request.method);
             return new Response('Method Not Allowed', { status: 405 });
